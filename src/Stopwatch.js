@@ -1,9 +1,10 @@
 import {useState, useEffect} from 'react'
 
-const Stopwatch = () => {
+const Stopwatch = ({clockNum}) => {
     const [sec, setSec] = useState(0);
     const [timerOn, setTimerOn] = useState(false);
     const [event, setEvent] = useState('');
+    
     
     const secToClock = () => {
         let hrs = Math.floor(sec / (60 ** 2));
@@ -29,22 +30,31 @@ const Stopwatch = () => {
 
         if(timerOn){
             x = setInterval(() => {                    
-                setSec((currentSec) => (currentSec + 1));            
+                setSec((currentSec) => (currentSec + 1));           
                 }, 1000);
         }
                         
         return () => clearInterval(x);
     }, [timerOn]);     
 
+    const removeWatch = () => {
+
+
+    }
+
     return ( 
         <div className="stopwatch">
-            <textarea onChange={(e)=>{setEvent(e.target.value);}}/>
-            <p>{secToClock()}</p>
-            <button onClick={()=>{setTimerOn(true);}}>start</button>
-            <button onClick={()=>{setTimerOn(false);}}>stop</button>
-            <button onClick={()=>{setSec(0);setTimerOn(false);}}>reset</button>
-            <p>{event}</p>
-
+           
+            <div ><textarea className="watchEvent"  onChange={(e)=>{setEvent(e.target.value);}}/></div>
+            
+            <div className="watchBody">{secToClock()}</div>
+            
+            <div className="buttons">
+                <button className="start" onClick={()=>{setTimerOn(true);}}>start</button>
+                <button className="stop" onClick={()=>{setTimerOn(false);}}>stop</button>
+                <button className="reset" onClick={()=>{setSec(0);setTimerOn(false);}}>reset</button>
+            
+            </div>
             
 
         </div>
