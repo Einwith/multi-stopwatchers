@@ -1,1 +1,1 @@
-Multi stopwatcheres project in progress.
+A React application to create multiple stopwatches.
