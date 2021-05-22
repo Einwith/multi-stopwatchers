@@ -3,7 +3,7 @@ import Stopwatch from "./Stopwatch";
 import StopwatchesList from "./StopwatchesList";
 import Subscription from "./Subscription";
 import NavBar from "./NavBar";
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import About from "./About";
 
 
@@ -11,7 +11,7 @@ import About from "./About";
 
 function App() {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <div className="App">
         <header>All Timers</header>
         <main className="main">
